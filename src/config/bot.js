@@ -544,24 +544,3 @@ export function getRandomColor() {
 
 export default botConfig;
 
-
-
-
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
-
-const PREFIX = '?'; // Your chosen prefix
-
-client.on('messageCreate', message => {
-    // Ignore messages from bots or messages that don't start with the prefix
-    if (message.author.bot || !message.content.startsWith(PREFIX)) return;
-
-    // Separate the command and arguments
-    const args = message.content.slice(PREFIX.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    // Command handling logic
-    if (command === 'ping') {
-        message.channel.reply('Pong!');
-    }
-});
